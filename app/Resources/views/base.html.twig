@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head lang="fr">
+        <meta charset="UTF-8" />
+        <title>
+          {% block title %}{% endblock title %}
+        </title>
+        <link rel="icon" type="image/x-icon" href="{{ asset('sports.png') }}" />
+        <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+
+        <script type="text/javascript" src="{{asset('js/jquery-3.2.1.min.js')}}"></script><script type="text/javascript" src="{{ asset('js/script.js')}}">
+        </script>
+        <style>
+@import url('https://fonts.googleapis.com/css?family=Actor');
+</style>
+    </head>
+    <body>
+      <header class="banner-header">
+        <img src="{{ asset('basketix-orange.jpg')}}" alt="basketix.com" class="banner-img">
+
+      </header>
+      <nav class="navbar-main">
+          <ul class="navbar">
+            <li>
+              <a href="{{ path('homepage') }}">Accueil</a>
+            </li>
+            <li>
+              <a href="{{ path('teams_index') }}">Équipes</a>
+            </li>
+            <li>
+              <a href="{{ path('players_index') }}">Joueurs</a>
+            </li>
+            <li>
+              <a href="#">Contact</a>
+            </li>
+          </ul>
+        </nav>
+        <div class="container">
+        {% block body %}{% endblock %}
+       </div>
+       <footer><p class="footer-p">© Basketix.com 2017 | Réalisation : Ellorex & JCV96 </p></footer>
+    </body>
+</html>

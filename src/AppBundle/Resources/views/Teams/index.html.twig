@@ -1,0 +1,34 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}Basketix - Liste des équipes
+{% endblock title %}
+{% block body %}
+
+<div class="title2">
+  <h2>Liste des équipes :</h2>
+</div>
+<span class="btn">
+<a class="btntext" href="{{ path('teams_add') }}">Ajouter une équipe</a>
+</span>
+<br>
+<br>
+<table class="table">
+  <tr>
+    <th>Logo</th>
+    <th>Nom</th>
+    <th>Ville</th>
+    <th>Actions</th>
+  </tr>
+  {% for t in teams %}
+    <tr>
+        <td>{% if t.logo %}<img class="imgteam" src="{{asset('/img/team_logo/') ~ t.logo }}">{% endif %}</td>
+        <td>{{ t.name }}</td>
+        <td>{{ t.city }}</td>
+        <td>
+          <span class="editbtn"><a class="editbtntext" href="{{ path('teams_edit', {'id' : t.id}) }}">Modifier</a></span>
+          <span class="deletebtn"><a class="deletebtntext" href="{{ path('teams_delete', {'id' : t.id}) }}">Supprimer</a></span>
+        </td>
+    </tr>
+  {% endfor %}
+</table>
+{% endblock %}

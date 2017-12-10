@@ -1,0 +1,61 @@
+{% extends "::base.html.twig" %}
+
+
+{% block body %}
+
+<div class="title2">
+  <h2>Liste des joueurs</h2>
+</div>
+
+<span class="btn"><a class="btntext" href="{{ path('players_add') }}">Ajouter un joueur</a></span>
+<br>
+<br>
+<table class="table">
+     <tr>
+      <th>Portrait</th>
+      <th>Prénom</th>
+      <th>Nom</th>
+      <th>Age</th>
+      <th>Taille</th>
+      <th>Poids</th>
+      <th>Équipe</th>
+      <th>Actions</th>
+    </tr>
+
+<tr>
+    {% for p in players %}
+
+        <td>
+          {% if p.picture %}
+          <img src="{{ asset('/img/player_picture/') ~ p.picture }}" class="img-player">
+          {% endif %}
+        </td>
+        <td>{{ p.firstname }}</td>
+        <td>{{ p.lastname }}</td>
+        <td>{{ p.age }}</td>
+        <td>{{ p.height }}</td>
+        <td>{{ p.weight }}</td>
+        <td>
+          {% if p.team %}
+            {{ p.team.name }}
+          {% endif %}
+        </td>
+      <td>
+        <span class="editbtn"><a class="editbtntext" href="{{ path('players_edit', {'id' : p.id}) }}" class="editbtntext">Modifier</a></span>
+        <span class="deletebtn"><a class="deletebtntext" href="{{ path('players_delete', {'id' : p.id}) }}" class="deletebtntext">Supprimer</a></span>
+      </td>
+    </tr>{% endfor %}
+    <tr>
+     <th>Portrait</th>
+     <th>Prénom</th>
+     <th>Nom</th>
+     <th>Age</th>
+     <th>Taille</th>
+     <th>Poids</th>
+     <th>Équipe</th>
+     <th>Actions</th>
+   </tr>
+
+
+</table>
+{% endblock %}
